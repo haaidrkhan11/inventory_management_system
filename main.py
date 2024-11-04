@@ -143,32 +143,35 @@ def main():
                         products = system.inventory.view_products()
                         print(products)
                 
-               elif choice == '2':
+              elif choice == '2':
                     if isinstance(system.logged_in_user, Admin):
         # Admin can update a product
                         name = input("Enter the name of the product to update: ")
                         product = system.inventory.search_product(name)
+        
                         if product:
             # Handle new stock input with error checking
-                         while True:
-                            try:
-                                new_stock = int(input("Enter new stock level: "))
-                                break  # Exit loop if conversion is successful
-                            except ValueError:
-                                 print("Error: Please enter a valid integer for stock level.")
+                            while True:
+                                try:
+                                    new_stock = int(input("Enter new stock level: "))
+                                    break  # Exit loop if conversion is successful
+                                except ValueError:
+                                    print("Error: Please enter a valid integer for stock level.")
 
             # Handle new threshold input with error checking
-                        while True:
-                            try:
-                                  new_threshold = int(input("Enter new low stock threshold: "))
-                                  break  # Exit loop if conversion is successful
-                            except ValueError:
+                            while True:
+                                try:
+                                    new_threshold = int(input("Enter new low stock threshold: "))
+                                    break  # Exit loop if conversion is successful
+                                except ValueError:
                                     print("Error: Please enter a valid integer for low stock threshold.")
 
-                        admin.update_product(system.inventory, name, new_stock, new_threshold)
-                        print(f"{name} successfully updated!")  # Use the name variable for the product
-                    else:
-                        print("Product not found.")
+            # Update the product with the new values
+                            admin.update_product(system.inventory, name, new_stock, new_threshold)
+                            print(f"{name} successfully updated!")
+                        else:
+                            print("Error: Product not found.")
+
                         
                 elif choice == '3':
                     if isinstance(system.logged_in_user, Admin):
