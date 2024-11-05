@@ -93,7 +93,7 @@ class InventoryManagementSystem:
         elif isinstance(self.logged_in_user, Viewer):
             print(
                 "1. Enter 1 or 4 to view all our products.\n"
-                "2. Enter 2 or 5 to search for a specific product.\n"
+                "2. Enter 5 to search for a specific product.\n"
                 "3. Enter 6 to logout.\n")
 
     def restock_alert(self):
@@ -182,7 +182,7 @@ def main():
                              admin.delete_product(system.inventory, name)
                         else:
                             print("Product not found.")
-                    elif isinstance(system.logged_in_user, Admin):
+                    elif isinstance(system.logged_in_user, Viewer):
                             print("You do not have permission to delete products.")
 
                 elif choice == '4':
@@ -200,6 +200,7 @@ def main():
                              print(product)
                     else:
                         print("No products found.")
+                        
                 elif choice == '6':
                     print("Logging out...")
                     break  # Break out to login loop
