@@ -180,6 +180,7 @@ def main():
                         product= system.inventory.search_product(name)
                         if product:
                              admin.delete_product(system.inventory, name)
+                            print(f"{name} succesfully deleted from inventory!")
                         else:
                             print("Product not found.")
                     elif isinstance(system.logged_in_user, Viewer):
@@ -196,7 +197,6 @@ def main():
                     search_term = input("Enter product name or category to search: ")
                     results = system.inventory.search_product(name=search_term) 
                     if results:
-                        for index, product in enumerate(results, start=1):  
                              print(product)
                     else:
                         print("No products found.")
